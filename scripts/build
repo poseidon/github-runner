@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+# requires VERSION variable
+# requires SHA variable
+set -ex
+
+# base packages
+# https://github.com/actions/runner/blob/main/docs/start/envlinux.md#full-dependencies-list
+dnf -y update
+dnf -y install \
+  git curl tar zip make dumb-init \
+  lttng-ust openssl-libs krb5-libs zlib libicu
+dnf clean all
+
+# Create a folder
+mkdir actions-runner && cd actions-runner
+
+# Download the runner bundle
+curl -L https://github.com/actions/runner/releases/download/v${VERSION}/actions-runner-linux-x64-${VERSION}.tar.gz \
+  -o runner.tar.gz
+# Validate hash
+echo "${SHA}  runner.tar.gz" | sha256sum -c
+# Extract the installer
+tar xzf ./runner.tar.gz
+rm -f runner.tar.gz

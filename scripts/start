@@ -1,0 +1,48 @@
+#!/usr/bin/dumb-init /bin/bash
+set -e
+
+export RUNNER_ALLOW_RUNASROOT=1
+
+echo "Github Runner: $(./config.sh --version)"
+echo "GH_APP_ID: ${GH_APP_ID}"
+echo "GH_APP_KEY_PATH: ${GH_APP_KEY_PATH}"
+echo "GH_APP_ID: ${GH_INSTALL_ID}"
+
+RUNNER_GROUP=${GROUP:-default}
+RUNNER_LABELS=${LABELS:-}
+
+fetch_token() {
+  /opt/gha registration-token \
+  --app-id $GH_APP_ID \
+  --app-key-path $GH_APP_KEY_PATH \
+  --install-id $GH_INSTALL_ID \
+  --organization $GH_ORG
+}
+
+cleanup() {
+  echo "Cleanup"
+  ./config.sh remove --token $(fetch_token)
+  exit
+}
+
+RUNNER_TOKEN=$(fetch_token)
+
+if [ -f "/actions-runner/.runner" ]; then
+  echo "Already configured"
+else
+  echo "Configuring"
+  ./config.sh \
+    --url "https://github.com/${GH_ORG}" \
+    --token "${RUNNER_TOKEN}" \
+    --runnergroup "${RUNNER_GROUP}" \
+    --labels "${RUNNER_LABELS}" \
+    --work /runner \
+    --unattended \
+    --replace \
+    --disableupdate
+fi
+
+# deregister runner on interrupt
+trap cleanup SIGINT SIGQUIT SIGTERM INT TERM QUIT
+
+"$@"
