@@ -1,6 +1,6 @@
 export CGO_ENABLED:=0
 
-VERSION=$(shell git describe --tags --match=v* --always --abbrev=0 --dirty)
+VERSION=$(shell git describe --tags --match=v* --always --dirty)
 LD_FLAGS="-w -X github.com/deploybot-app/github-runner/cmd.version=$(VERSION)"
 
 REPO=github.com/deploybot-app/github-runner
@@ -32,18 +32,10 @@ image: \
 
 image-%:
 	buildah bud -f Dockerfile.$* \
-		-t $(LOCAL_REPO):$(VERSION) \
+		-t $(LOCAL_REPO):$(VERSION)-$* \
 		--layers \
 		--arch $* --override-arch $* \
 		.
-	buildah tag $(LOCAL_REPO):$(VERSION) $(LOCAL_REPO):latest
-
-.PHONY: push
-push:
-	buildah tag $(LOCAL_REPO):$(VERSION) $(IMAGE_REPO):$(VERSION)
-	buildah tag $(LOCAL_REPO):$(VERSION) $(IMAGE_REPO):latest
-	buildah push $(IMAGE_REPO):$(VERSION)
-	buildah push $(IMAGE_REPO):latest
 
 .PHONY: run
 run:
