@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 # requires VERSION variable
 # requires SHA variable
+# requires ARCH variable
 set -ex
 
 # base packages
@@ -15,7 +16,7 @@ dnf clean all
 mkdir actions-runner && cd actions-runner
 
 # Download the runner bundle
-curl -L https://github.com/actions/runner/releases/download/v${VERSION}/actions-runner-linux-x64-${VERSION}.tar.gz \
+curl -L https://github.com/actions/runner/releases/download/v${VERSION}/actions-runner-linux-${ARCH}-${VERSION}.tar.gz \
   -o runner.tar.gz
 # Validate hash
 echo "${SHA}  runner.tar.gz" | sha256sum -c

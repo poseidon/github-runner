@@ -7,21 +7,21 @@ REPO=github.com/deploybot-app/github-runner
 LOCAL_REPO=poseidon/github-runner
 IMAGE_REPO=quay.io/poseidon/github-runner
 
-GITHUB_RUNNER=2.294.0
-SHA=a19a09f4eda5716e5d48ba86b6b78fc014880c5619b9dba4a059eaf65e131780
-
 all: image
 
 .PHONY: bin
 bin:
 	@go build -o bin/gha -ldflags $(LD_FLAGS) $(REPO)/cmd/gha
 
-.PHONY: image
-image:
-	buildah bud -t $(LOCAL_REPO):$(VERSION) \
+image: \
+	image-amd64 \
+	image-arm64
+
+image-%:
+	buildah bud -f Dockerfile.$* \
+		-t $(LOCAL_REPO):$(VERSION) \
 		--layers \
-		--build-arg VERSION=$(GITHUB_RUNNER) \
-		--build-arg SHA=$(SHA) \
+		--arch $* --override-arch $* \
 		.
 	buildah tag $(LOCAL_REPO):$(VERSION) $(LOCAL_REPO):latest
 
