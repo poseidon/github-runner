@@ -7,11 +7,24 @@ REPO=github.com/deploybot-app/github-runner
 LOCAL_REPO=poseidon/github-runner
 IMAGE_REPO=quay.io/poseidon/github-runner
 
-all: image
+.PHONY: all
+all: bin test vet fmt
 
 .PHONY: bin
 bin:
 	@go build -o bin/gha -ldflags $(LD_FLAGS) $(REPO)/cmd/gha
+
+.PHONY: test
+test:
+	@go test ./... -cover
+
+.PHONY: vet
+vet:
+	@go vet -all ./...
+
+.PHONY: fmt
+fmt:
+	@test -z $$(go fmt ./...)
 
 image: \
 	image-amd64 \
