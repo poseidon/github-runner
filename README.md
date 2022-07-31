@@ -1,4 +1,5 @@
-# github-runner
+# github-runner [![Workflow](https://github.com/deploybot-app/github-runner/actions/workflows/test.yaml/badge.svg)](https://github.com/deploybot-app/github-runner/actions/workflows/test.yaml?query=branch%3Amain) [![GoDoc](https://pkg.go.dev/badge/github.com/deploybot-app/github-runner.svg)](https://pkg.go.dev/github.com/deploybot-app/github-runner) [![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/deploybotapp)
+
 
 `github-runner` provides the Github Actions [self-hosted](https://docs.github.com/en/actions/hosting-your-own-runners) [runner](https://github.com/actions/runner) as a container image that registers itself with Github.
 
