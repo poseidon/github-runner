@@ -72,6 +72,7 @@ Configure github-runner to act as a Github App to obtain a self-hosted runner re
 | GH_ORG          | Github organization name |
 | GROUP  | Runner group defaults to default |
 | LABELS | Labels in addition to default: 'self-hosted,Linux,X64' |
+| EPHEMERAL | Unregister a runner after a job |
 
 ## Tradeoffs
 

@@ -15,9 +15,6 @@ jobs:
         with:
           go-version: ${{matrix.go}}
 
-      - name: tools
-        run: go install golang.org/x/lint/golint@latest
-
       - name: checkout
         uses: actions/checkout@v3
 
