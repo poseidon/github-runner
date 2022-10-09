@@ -6,9 +6,9 @@ RUN cd src && make bin
 FROM docker.io/fedora:36
 LABEL maintainer="Dalton Hubble <dghubble@gmail.com>"
 
-ARG VERSION=2.297.0
+ARG VERSION=2.298.2
 ARG ARCH=x64
-ARG SHA=eb4e2fa6567d2222686be95ee23210e83fb6356dd0195149f96fd91398323d7f
+ARG SHA=0bfd792196ce0ec6f1c65d2a9ad00215b2926ef2c416b8d97615265194477117
 
 COPY scripts /scripts
 RUN /scripts/build
