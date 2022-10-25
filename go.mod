@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/bradleyfalzon/ghinstallation/v2 v2.1.0
 	github.com/google/go-github/v45 v45.2.0
-	github.com/spf13/cobra v1.6.0
+	github.com/spf13/cobra v1.6.1
 )
 
 require (
