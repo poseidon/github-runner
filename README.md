@@ -1,4 +1,8 @@
-# github-runner [![GoDoc](https://pkg.go.dev/badge/github.com/poseidon/github-runner.svg)](https://pkg.go.dev/github.com/poseidon/github-runner) [![Workflow](https://github.com/poseidon/github-runner/actions/workflows/test.yaml/badge.svg)](https://github.com/poseidon/github-runner/actions/workflows/test.yaml?query=branch%3Amain) [![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/deploybotapp)
+# github-runner
+[![GoDoc](https://pkg.go.dev/badge/github.com/poseidon/github-runner.svg)](https://pkg.go.dev/github.com/poseidon/github-runner)
+[![Workflow](https://github.com/poseidon/github-runner/actions/workflows/test.yaml/badge.svg)](https://github.com/poseidon/github-runner/actions/workflows/test.yaml?query=branch%3Amain)
+[![Twitter](https://img.shields.io/badge/follow-news-1da1f2?logo=twitter)](https://twitter.com/deploybotapp)
+[![Mastodon](https://img.shields.io/badge/follow-news-6364ff?logo=mastodon)](https://fosstodon.org/@poseidon)
 
 `github-runner` provides the Github Actions [self-hosted](https://docs.github.com/en/actions/hosting-your-own-runners) [runner](https://github.com/actions/runner) as a container image that registers itself with Github.
 
