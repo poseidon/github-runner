@@ -1,9 +1,9 @@
 export CGO_ENABLED:=0
 
 VERSION=$(shell git describe --tags --match=v* --always --dirty)
-LD_FLAGS="-w -X github.com/deploybot-app/github-runner/cmd.version=$(VERSION)"
+LD_FLAGS="-w -X github.com/poseidon/github-runner/cmd.version=$(VERSION)"
 
-REPO=github.com/deploybot-app/github-runner
+REPO=github.com/poseidon/github-runner
 LOCAL_REPO=poseidon/github-runner
 IMAGE_REPO=quay.io/poseidon/github-runner
 

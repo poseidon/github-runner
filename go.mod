@@ -1,4 +1,4 @@
-module github.com/deploybot-app/github-runner
+module github.com/poseidon/github-runner
 
 go 1.18
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/deploybot-app/github-runner/cmd"
+	"github.com/poseidon/github-runner/cmd"
 )
 
 func main() {
