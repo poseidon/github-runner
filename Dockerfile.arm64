@@ -3,7 +3,7 @@ COPY . src
 RUN cd src && make bin
 
 
-FROM docker.io/fedora:36
+FROM docker.io/fedora:37
 LABEL maintainer="Dalton Hubble <dghubble@gmail.com>"
 
 ARG VERSION=2.299.1
