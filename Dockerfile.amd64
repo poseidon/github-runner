@@ -5,6 +5,9 @@ RUN cd src && make bin
 
 FROM docker.io/fedora:37
 LABEL maintainer="Dalton Hubble <dghubble@gmail.com>"
+LABEL org.opencontainers.image.title="github-runner"
+LABEL org.opencontainers.image.source="https://github.com/poseidon/github-runner"
+LABEL org.opencontainers.image.vendor="Poseidon Labs"
 
 ARG VERSION=2.299.1
 ARG ARCH=x64
