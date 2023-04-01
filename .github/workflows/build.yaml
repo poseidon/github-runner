@@ -1,0 +1,8 @@
+name: multi-arch
+on:
+  push:
+jobs:
+  multi-arch:
+    uses: ./.github/workflows/multi-arch.yaml
+    secrets:
+      QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
