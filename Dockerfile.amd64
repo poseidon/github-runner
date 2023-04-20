@@ -9,9 +9,9 @@ LABEL org.opencontainers.image.title="github-runner"
 LABEL org.opencontainers.image.source="https://github.com/poseidon/github-runner"
 LABEL org.opencontainers.image.vendor="Poseidon Labs"
 
-ARG VERSION=2.302.1
+ARG VERSION=2.303.0
 ARG ARCH=x64
-ARG SHA=3d357d4da3449a3b2c644dee1cc245436c09b6e5ece3e26a05bb3025010ea14d
+ARG SHA=e4a9fb7269c1a156eb5d5369232d0cd62e06bec2fd2b321600e85ac914a9cc73
 
 COPY scripts /scripts
 RUN /scripts/build
