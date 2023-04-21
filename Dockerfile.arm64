@@ -3,7 +3,7 @@ COPY . src
 RUN cd src && make bin
 
 
-FROM docker.io/fedora:37
+FROM docker.io/fedora:38
 LABEL maintainer="Dalton Hubble <dghubble@gmail.com>"
 LABEL org.opencontainers.image.title="github-runner"
 LABEL org.opencontainers.image.source="https://github.com/poseidon/github-runner"
