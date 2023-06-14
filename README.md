@@ -21,7 +21,7 @@
 
 GitHub [self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners) allow you to run GitHub Actions Workflows in environments you manage on your own infrastructure.
 
-`github-runner` packages the GitHub [runner](https://github.com/actions/runner) along with a tool to fetch a runner registration token dynamically on container start by acting as a GitHub App. On Kubernetes, you can create a ``Deployment of `github-runner` (or descendant image) Pods, watch them register and run jobs. A runner Pod can run one job ("ephemeral") or be long-lived.
+`github-runner` packages the GitHub [runner](https://github.com/actions/runner) along with a tool to fetch a runner registration token dynamically on container start by acting as a GitHub App. On Kubernetes, you can create a Deployment of `github-runner` (or descendant image) Pods, watch them register and run jobs. A runner Pod can run one job ("ephemeral") or be long-lived.
 
 *Note: GitHub personal access tokens can also fetch runner registration tokens, but at most organizations, using a personal token or a robot user isn't an option.*
 
@@ -89,8 +89,7 @@ Configure github-runner to act as a GitHub App to obtain a self-hosted runner re
 
 More complex needs may be handled by more complex [projects](https://github.com/actions-runner-controller/actions-runner-controller) (out of scope):
 
-* Auto-scaling in runners
-* Ephemeral runners
+* Auto-scaling runners
 
 ## Security
 
