@@ -4,13 +4,16 @@
 # requires ARCH variable
 set -ex
 
+# Avoid the tzdata prompt
+export DEBIAN_FRONTEND=noninteractive
+
 # base packages
 # https://github.com/actions/runner/blob/main/docs/start/envlinux.md#full-dependencies-list
-dnf -y update
-dnf -y install \
-  git curl tar zip make dumb-init \
-  lttng-ust openssl-libs krb5-libs zlib libicu
-dnf clean all
+apt-get update
+apt-get install --no-install-recommends -y \
+  liblttng-ust0 libkrb5-3 zlib1g libssl1.1 libicu66 \
+  git curl tar zip make dumb-init ca-certificates
+apt-get clean
 
 # Create a folder
 mkdir actions-runner && cd actions-runner
