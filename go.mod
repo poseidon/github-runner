@@ -3,7 +3,7 @@ module github.com/poseidon/github-runner
 go 1.19
 
 require (
-	github.com/bradleyfalzon/ghinstallation/v2 v2.5.0
+	github.com/bradleyfalzon/ghinstallation/v2 v2.6.0
 	github.com/google/go-github/v45 v45.2.0
 	github.com/spf13/cobra v1.7.0
 )
@@ -13,7 +13,7 @@ require (
 	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-github/v53 v53.0.0 // indirect
+	github.com/google/go-github/v53 v53.2.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
