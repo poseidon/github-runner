@@ -32,6 +32,7 @@ image: \
 
 image-%:
 	buildah bud -f Dockerfile.$* \
+		--security-opt seccomp=unconfined \
 		-t $(LOCAL_REPO):$(VERSION)-$* \
 		--layers \
 		--arch $* --override-arch $* \
@@ -52,6 +53,7 @@ manifest:
 run:
 	podman run \
 		-it \
-		--env-file $(HOME)/.secrets/vault/apps/github-runner/runner.env \
-		-v ~/.secrets/vault/apps/github-runner:/etc/github-runner:Z \
-		poseidon/github-runner:$(VERSION)
+		--env-file ~/.config/github-runner/github-runner.env \
+		-v ~/.config/github-runner:/etc/github-runner:Z \
+		-v /run:/run \
+		localhost/poseidon/github-runner:$(VERSION)-amd64
