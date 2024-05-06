@@ -1,4 +1,4 @@
-FROM docker.io/golang:1.22.2 AS builder
+FROM docker.io/golang:1.22.1 AS builder
 COPY . src
 RUN cd src && make bin
 
@@ -9,9 +9,9 @@ LABEL org.opencontainers.image.title="github-runner"
 LABEL org.opencontainers.image.source="https://github.com/poseidon/github-runner"
 LABEL org.opencontainers.image.vendor="Poseidon Labs"
 
-ARG VERSION=2.315.0
+ARG VERSION=2.316.1
 ARG ARCH=x64
-ARG SHA=6362646b67613c6981db76f4d25e68e463a9af2cc8d16e31bfeabe39153606a0
+ARG SHA=d62de2400eeeacd195db91e2ff011bfb646cd5d85545e81d8f78c436183e09a8
 
 COPY scripts /scripts
 RUN /scripts/build
