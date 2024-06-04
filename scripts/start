@@ -22,9 +22,8 @@ fetch_token() {
 
 cleanup() {
   echo "Cleanup"
-  pkill -f './bin/Runner.Listener'
   ./config.sh remove --token $(fetch_token)
-  exit 0
+  exit
 }
 
 RUNNER_TOKEN=$(fetch_token)

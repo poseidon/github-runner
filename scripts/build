@@ -11,7 +11,7 @@ export DEBIAN_FRONTEND=noninteractive
 # https://github.com/actions/runner/blob/main/docs/start/envlinux.md#full-dependencies-list
 apt-get update
 apt-get install --no-install-recommends -y \
-  liblttng-ust0 libkrb5-3 zlib1g libssl1.1 libicu66 \
+  liblttng-ust-dev libkrb5-3 zlib1g libssl-dev libicu74 \
   git curl tar zip make dumb-init ca-certificates
 apt-get clean
 
