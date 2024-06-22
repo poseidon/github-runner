@@ -1,6 +1,6 @@
 export CGO_ENABLED:=0
 
-VERSION=$(shell git describe --tags --match=v* --always --dirty)
+VERSION=$(shell git describe --tags --match=v* --always)
 LD_FLAGS="-w -X github.com/poseidon/github-runner/cmd.version=$(VERSION)"
 
 REPO=github.com/poseidon/github-runner
@@ -53,7 +53,7 @@ manifest:
 run:
 	podman run \
 		-it \
-		--env-file ~/.config/github-runner/github-runner.env \
-		-v ~/.config/github-runner:/etc/github-runner:Z \
-		-v /run:/run \
+		--env-file ~/.config/github-runner/poseidon.env \
+		-v $(shell readlink -f ~/.config/github-runner/poseidon.env):/etc/github-runner/dghubble-org.env \
+		-v $(shell readlink -f ~/.config/github-runner/github-app.key.pem):/etc/github-runner/github-app.key.pem \
 		localhost/poseidon/github-runner:$(VERSION)-amd64
