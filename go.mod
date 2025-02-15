@@ -2,7 +2,7 @@ module github.com/poseidon/github-runner
 
 go 1.21
 
-toolchain go1.21.8
+toolchain go1.24.0
 
 require (
 	github.com/bradleyfalzon/ghinstallation/v2 v2.13.0
