@@ -1,7 +1,6 @@
 module github.com/poseidon/github-runner
 
 go 1.22.0
-
 toolchain go1.24.2
 
 require (
@@ -16,5 +15,5 @@ require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
+	golang.org/x/crypto v0.35.0 // indirect
 )
