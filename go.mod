@@ -7,7 +7,7 @@ toolchain go1.25.0
 require (
 	github.com/bradleyfalzon/ghinstallation/v2 v2.16.0
 	github.com/google/go-github/v45 v45.2.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 )
 
 require (
