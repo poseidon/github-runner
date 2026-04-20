@@ -8,40 +8,40 @@ echo "GH_APP_ID: ${GH_APP_ID}"
 echo "GH_APP_KEY_PATH: ${GH_APP_KEY_PATH}"
 echo "GH_APP_ID: ${GH_INSTALL_ID}"
 
-RUNNER_GROUP=${GROUP:-default}
-RUNNER_LABELS=${LABELS:-}
-EPHEMERAL=${EMPHEMERAL:-"--ephemeral"}
-
 fetch_token() {
   /opt/gha registration-token \
-  --app-id $GH_APP_ID \
-  --app-key-path $GH_APP_KEY_PATH \
-  --install-id $GH_INSTALL_ID \
-  --organization $GH_ORG
+    --app-id "$GH_APP_ID" \
+    --app-key-path "$GH_APP_KEY_PATH" \
+    --install-id "$GH_INSTALL_ID" \
+    --organization "$GH_ORG"
 }
 
 cleanup() {
   echo "Cleanup"
-  ./config.sh remove --token $(fetch_token)
+  ./config.sh remove --token "$(fetch_token)"
   exit
 }
 
-RUNNER_TOKEN=$(fetch_token)
+CONFIG_ARGS=(
+  --url "https://github.com/${GH_ORG}"
+  --token "$(fetch_token)"
+  --runnergroup "${GROUP:-default}"
+  --labels "${LABELS:-}"
+  --work /runner
+  --unattended
+  --replace
+  --disableupdate
+)
+
+case "${EPHEMERAL:-}" in
+true | TRUE | 1 | yes | on | --ephemeral) CONFIG_ARGS+=(--ephemeral) ;;
+esac
 
 if [ -f "/actions-runner/.runner" ]; then
   echo "Already configured"
 else
   echo "Configuring"
-  ./config.sh \
-    --url "https://github.com/${GH_ORG}" \
-    --token "${RUNNER_TOKEN}" \
-    --runnergroup "${RUNNER_GROUP}" \
-    --labels "${RUNNER_LABELS}" \
-    --work /runner \
-    --unattended \
-    --replace \
-    ${EPHEMERAL} \
-    --disableupdate
+  ./config.sh "${CONFIG_ARGS[@]}"
 fi
 
 # deregister runner on interrupt
