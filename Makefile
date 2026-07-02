@@ -31,23 +31,23 @@ image: \
 	image-arm64
 
 image-%:
-	buildah bud -f Dockerfile.$* \
+	podman build -f Dockerfile.$* \
 		--security-opt seccomp=unconfined \
 		-t $(LOCAL_REPO):$(VERSION)-$* \
 		--layers \
-		--arch $* --override-arch $* \
+		--platform linux/$* \
 		.
 
 push-%:
-	buildah tag $(LOCAL_REPO):$(VERSION)-$* $(IMAGE_REPO):$(VERSION)-$*
-	buildah push --format v2s2 $(IMAGE_REPO):$(VERSION)-$*
+	podman tag $(LOCAL_REPO):$(VERSION)-$* $(IMAGE_REPO):$(VERSION)-$*
+	podman push $(IMAGE_REPO):$(VERSION)-$*
 
 manifest:
-	buildah manifest create $(IMAGE_REPO):$(VERSION)
-	buildah manifest add $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)-amd64
-	buildah manifest add --variant v8 $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)-arm64
-	buildah manifest inspect $(IMAGE_REPO):$(VERSION)
-	buildah manifest push -f v2s2 $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)
+	podman manifest create $(IMAGE_REPO):$(VERSION)
+	podman manifest add $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)-amd64
+	podman manifest add $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)-arm64
+	podman manifest inspect $(IMAGE_REPO):$(VERSION)
+	podman manifest push $(IMAGE_REPO):$(VERSION) docker://$(IMAGE_REPO):$(VERSION)
 
 .PHONY: run
 run:
