@@ -10,7 +10,7 @@ echo "GH_APP_ID: ${GH_INSTALL_ID}"
 
 RUNNER_GROUP=${GROUP:-default}
 RUNNER_LABELS=${LABELS:-}
-EPHEMERAL=${EMPHEMERAL:-"--ephemeral"}
+EPHEMERAL=${EPHEMERAL:-"--ephemeral"}
 
 fetch_token() {
   /opt/gha registration-token \
